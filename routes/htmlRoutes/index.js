@@ -1,8 +1,12 @@
-//require express
-//piece together routes
-//instantiate express
-//app.use(routes)
-// export 
+const path = require('path');
+const router2 = require('express').Router();
 
+router2.get('/notes', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/notes.html'))
+});
 
-//reference express mini project for structure
+router2.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/index.html'))
+});
+
+module.exports = router2;
