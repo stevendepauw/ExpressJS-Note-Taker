@@ -1,9 +1,9 @@
 const fs = require('fs');
 const db = require('../../db/db.json');
-const router1 = require('express').Router();
+const router = require('express').Router();
 const uniqid = require('uniqid');
 
-router1.get('/api/notes', (req, res) => {
+router.get('/api/notes', (req, res) => {
     fs.readFile('../db/db.json', (err, data) => {
         if (err) throw err;
         console.log(JSON.parse(data));
@@ -12,7 +12,7 @@ router1.get('/api/notes', (req, res) => {
     })
 });
 
-router1.post('/api/notes', (req, res) => {
+router.post('/api/notes', (req, res) => {
     let newNote = {
         id: uniqid(),
         title: req.body.title,
@@ -35,4 +35,4 @@ router1.post('/api/notes', (req, res) => {
     });
 });
 
-module.exports = router1;
+module.exports = router;
